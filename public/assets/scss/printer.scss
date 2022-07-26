@@ -1,0 +1,143 @@
+@import "theme.scss";
+
+* {
+    transition: all 0.25s cubic-bezier(0.33, 1, 0.68, 1);
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Montserrat;
+    color: white;
+    letter-spacing: 0.5px;
+
+    @include backgroundGradient;
+}
+
+input,
+textarea,
+button {
+    font-family: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $headerFont;
+}
+
+a {
+    cursor: pointer;
+}
+
+section.container,
+div.container {
+    width: 100%;
+    max-width: 768px;
+    margin: auto;
+
+    &.page {
+        min-height: calc(100vh - 90px);
+    }
+
+    &.flex {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &.center {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+a.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 140px;
+    height: 35px;
+    border-radius: 3px;
+    font-size: 16px;
+    font-weight: bold;
+    background: $primary;
+    color: white;
+    text-decoration: none;
+    margin: 0 15px 0 0;
+    cursor: pointer;
+
+    &:hover {
+        background: $primarylight;
+    }
+
+    .i,
+    .icon {
+        margin: 0 8px 0 0;
+    }
+}
+
+div.add-todo {
+    @include panel;
+
+    p {
+        font-size: 14px;
+        font-weight: bold;
+        padding: 0 0 5px;
+    }
+
+    input {
+        display: block;
+        width: 100%;
+        height: 40px;
+        background: rgba(0, 0, 0, 0.25);
+        color: white;
+        border: none;
+        margin: 0 0 15px 0;
+        padding: 0 15px;
+        font-size: 16px;
+        border: 2px solid rgba(0, 0, 0, 0.1);
+        border-radius: 3px;
+        outline: none;
+
+        &:focus {
+            border: 2px solid $primary;
+        }
+    }
+
+    a.button {
+        margin: 0 0 0 auto;
+    }
+}
+
+div.todo-list {
+    @include panel;
+    padding: 15px;
+
+    div.todo-item {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding: 15px;
+        cursor: pointer;
+
+        &:hover {
+            background: rgba(256, 256, 256, 0.1);
+        }
+
+        a.cb {
+            width: 20px;
+            height: 20px;
+            border-radius: 20px;
+            border: 2px solid white;
+
+            &.check {
+                border: 2px solid $green;
+                background: $green;
+            }
+        }
+    }
+}
