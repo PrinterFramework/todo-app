@@ -1,17 +1,18 @@
-// Fonts
-$headerFont: 'Oswald';
-$copyFont: 'Montserrat';
+$header-font: 'Oswald';
+$body-font: 'Montserrat';
 
-// Core Color Theme
 $primary: #C49A0F;
-$primarylight: #F2D577;
+$primary-light: #F2D577;
+
+$container-width: 1268px;
+$page-height: 100vh;
 
 // Frame Theme
 $red: #E9524A;
 $yellow: #F1AE1B;
 $green: #59C837;
 
-@mixin backgroundGradient {
+@mixin bg-gradient() {
   background: rgb(41, 41, 41);
   background: radial-gradient(circle, rgba(41, 41, 41, 1) 0%, rgba(29, 29, 29, 1) 100%);
 }
@@ -27,6 +28,10 @@ $green: #59C837;
 
 @mixin boxshadow2 {
   box-shadow: 0 0 15px 15px rgba(0, 0, 0, 0.1);
+}
+
+@mixin transition($property: all, $duration: 0.25s) {
+  transition: $property $duration cubic-bezier(0.33, 1, 0.68, 1);
 }
 
 @mixin panel {

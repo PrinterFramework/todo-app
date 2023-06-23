@@ -1,10 +1,25 @@
-export const password =
-  '37d02fccb8d6a3ab3d48b68c517b50e65cb56ce7a246223259fa6102f87f0147'
+import { NextRequest, NextResponse } from 'next/server'
+import { getIronSession, createResponse } from 'iron-session'
 
-export const Session = {
-  cookieName: 'printer',
-  password,
-  cookieOptions: {
-    secure: process.env.NODE_ENV === 'production'
-  }
+export const password =
+  process.env.SESSION_SECRET ||
+  'ad41152b0c014282bafe879eb7e909295b291c31590384d2348156397d5ac5a8'
+
+export interface SessionI {
+  counter?: number
 }
+
+export function getSession(req: NextRequest, res: NextResponse) {
+  return getIronSession<SessionI>(req, res, {
+    password,
+    cookieName: 'printer',
+    cookieOptions: {
+      secure: process.env.NODE_ENV === 'production',
+      maxAge: process.env.COOKIE_AGE
+        ? Number(process.env.COOKIE_AGE)
+        : undefined
+    }
+  })
+}
+
+export { createResponse }

@@ -1,16 +1,11 @@
-import TodoType from 'types/todo'
-import { addTodo, setTodoStatus } from 'redux/slice/todo'
-import { useSelector, useDispatch } from 'react-redux'
+import { addTodo } from 'redux/slice/todo'
+import { useAppDispatch } from 'redux/hooks'
 import { useState } from 'react'
 
 export interface AddI {}
 
 export function Add({}: AddI) {
-  const dispatch = useDispatch()
-  const todos = useSelector((state: { todo: { todos: TodoType[] } }) => [
-    ...state.todo.todos
-  ])
-
+  const dispatch = useAppDispatch()
   const [task, setTask] = useState('')
 
   function addNewTodo() {
